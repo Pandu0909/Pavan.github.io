@@ -3,122 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K PAVAN KUMAR -  My Portfolio</title>
+    <title>Ram's Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Simple CSS - You can customize colors later */
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            line-height: 1.6;
+        /* Custom Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
         }
-        .container { 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 20px; 
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 1.2s ease-out forwards;
         }
-        .hero { 
-            text-align: center; 
-            padding: 50px 0; 
-            background: #2c3e50; 
-            color: white; 
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
         }
-        .section { 
-            margin: 40px 0; 
+        .project-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
-        .project { 
-            border: 1px solid #ddd; 
-            padding: 15px; 
-            margin: 10px 0; 
-            border-radius: 5px;
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
         }
-        .skill-tag {
-            background: #3498db;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 3px;
-            display: inline-block;
-            margin: 5px;
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #134e4a, #2dd4bf);
         }
-        .contact a {
-            color: #2c3e50;
-            text-decoration: none;
+        /* Scroll-Triggered Animation */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
-<body>
+<body class="bg-transparent text-gray-100">
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Header Section -->
+    <header class="bg-teal-900 bg-opacity-85 sticky top-0 z-20 shadow-lg">
+        <nav class="max-w-7xl mx-auto py-4 px-6 flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-green-300">Ram</h1>
+            <div class="space-x-6">
+                <a href="#about" class="text-lg hover:text-green-300 transition-colors">About</a>
+                <a href="#skills" class="text-lg hover:text-green-300 transition-colors">Skills</a>
+                <a href="#projects" class="text-lg hover:text-green-300 transition-colors">Projects</a>
+                <a href="#contact" class="text-lg hover:text-green-300 transition-colors">Contact</a>
+                <a href="https://github.com/ram" target="_blank" class="bg-green-400 text-gray-900 px-5 py-2 rounded-full font-semibold hover:bg-green-500">GitHub</a>
+            </div>
+        </nav>
+    </header>
+
     <!-- Hero Section -->
-    <div class="hero">
-        <h1>K Pavan Kumar</h1>
-        <p>Data Analyst | SQL | Python | Data Visualization</p>
-        <p>Transforming data into actionable insights</p>
-    </div>
-
-    <div class="container">
-        <!-- About Section -->
-        <div class="section">
-            <h2>About Me</h2>
-            <p>I am a passionate Data Analyst with expertise in SQL, Python, and data visualization. 
-            I enjoy solving business problems through data-driven approaches and have completed 
-            multiple data analysis projects.</p>
+    <section class="min-h-screen flex items-center justify-center text-center px-4 relative">
+        <div class="fade-in" style="animation-delay: 0.2s;">
+            <h1 class="text-6xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-300 to-teal-500">Hi, I'm Ram</h1>
+            <p class="text-2xl mb-6 text-gray-200">B.Tech ECE 2025 | Building Data-Driven & AI-Powered Web Solutions</p>
+            <a href="/resume.pdf" download class="bg-gradient-to-r from-green-400 to-teal-500 text-gray-900 px-8 py-3 rounded-full font-semibold hover:from-green-500 hover:to-teal-600 transition-all">Download Resume</a>
         </div>
+    </section>
 
-        <!-- Skills Section -->
-        <div class="section">
-            <h2>Skills</h2>
-            <div class="skill-tag">SQL</div>
-            <div class="skill-tag">Python</div>
-            <div class="skill-tag">Pandas</div>
-            <div class="skill-tag">NumPy</div>
-            <div class="skill-tag">Data Visualization</div>
-            <div class="skill-tag">Java</div>
-            <div class="skill-tag">Git</div>
-            <div class="skill-tag">MySQL</div>
-            <div class="skill-tag">AIML</div>
-            <div class="skill-tag">Generative AI</div>
-            <div class="skill-tag">React JS</div>
+    <!-- About Section -->
+    <section id="about" class="max-w-7xl mx-auto py-16 px-4 fade-in" style="animation-delay: 0.4s;">
+        <h2 class="text-4xl font-bold mb-6 text-center text-green-300">About Me</h2>
+        <p class="text-lg leading-relaxed text-gray-200">I'm a 2025 B.Tech ECE graduate from Siddhartha Institute of Engineering and Technology (SIETK), passionate about leveraging technology to solve real-world problems. With expertise in Python, Java, JavaScript, and frameworks like React, NumPy, and Pandas, I build innovative web applications and data-driven solutions. My projects, from IoT systems to AI-enhanced apps, reflect my drive to excel as a Data Analyst, Data Engineer, Full-Stack SDE, or AI Engineer.</p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="max-w-7xl mx-auto py-16 px-4 animate-on-scroll">
+        <h2 class="text-4xl font-bold mb-6 text-center text-green-300">My Skills</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-teal-800 p-4 rounded-lg text-center text-gray-100">Python</div>
+            <div class="bg-teal-800 p-4 rounded-lg text-center text-gray-100">Java</div>
+            <div class="bg-teal-800 p-4 rounded-lg text-center text-gray-100">JavaScript</div>
+            <div class="bg-teal-800 p-4 rounded-lg text-center text-gray-100">React</div>
+            <div class="bg-teal-800 p-4 rounded-lg text-center text-gray-100">NumPy</div>
+            <div class="bg-teal-800 p-4 rounded-lg text-center text-gray-100">Pandas</div>
+            <div class="bg-teal-800 p-4 rounded-lg text-center text-gray-100">Matplotlib</div>
+            <div class="bg-teal-800 p-4 rounded-lg text-center text-gray-100">SQL</div>
+            <div class="bg-teal-800 p-4 rounded-lg text-center text-gray-100">Git</div>
+            <div class="bg-teal-800 p-4 rounded-lg text-center text-gray-100">AIML</div>
+            <div class="bg-teal-800 p-4 rounded-lg text-center text-gray-100">Generative AI</div>
         </div>
+    </section>
 
-        <!-- Projects Section -->
-        <div class="section">
-            <h2>Projects</h2>
-            
-            <div class="project">
-                <h3>Sales Data Analysis</h3>
-                <p><strong>Technologies:</strong> SQL, Python, Matplotlib</p>
-                <p>Analyzed sales data to identify trends and patterns. Created visualizations to present findings.</p>
+    <!-- Projects Section -->
+    <section id="projects" class="max-w-7xl mx-auto py-16 px-4">
+        <h2 class="text-4xl font-bold mb-6 text-center text-green-300">My GitHub Projects</h2>
+        <div class="flex justify-center mb-8">
+            <button onclick="filterProjects('all')" class="px-6 py-3 mx-2 bg-gradient-to-r from-green-400 to-teal-500 text-gray-900 rounded-full hover:from-green-500 hover:to-teal-600 transition-all">All</button>
+            <button onclick="filterProjects('web')" class="px-6 py-3 mx-2 bg-gradient-to-r from-green-400 to-teal-500 text-gray-900 rounded-full hover:from-green-500 hover:to-teal-600 transition-all">Web Dev</button>
+            <button onclick="filterProjects('data')" class="px-6 py-3 mx-2 bg-gradient-to-r from-green-400 to-teal-500 text-gray-900 rounded-full hover:from-green-500 hover:to-teal-600 transition-all">Data/IoT</button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="project-grid">
+            <!-- Project 1 -->
+            <div class="project-card p-6 rounded-xl animate-on-scroll web" data-category="web">
+                <img src="https://via.placeholder.com/300x150?text=Weather+Monitoring" alt="Weather Monitoring" class="w-full h-40 object-cover rounded-t-xl mb-4">
+                <h3 class="text-2xl font-semibold mb-2 text-gray-100">Real-Time Weather Monitoring System</h3>
+                <p class="text-gray-300 mb-4">A web app fetching live weather data using OpenWeatherMap API, displaying real-time updates.</p>
+                <p class="text-gray-400"><strong>Tech:</strong> JavaScript, React, API, CSS</p>
+                <p class="text-gray-400"><strong>Impact:</strong> Provided accurate weather updates for 200+ users during testing.</p>
+                <a href="https://github.com/ram/weather-monitoring" target="_blank" class="text-green-300 font-semibold hover:underline">View on GitHub</a>
             </div>
-
-            <div class="project">
-                <h3>Customer Segmentation</h3>
-                <p><strong>Technologies:</strong> Python, Pandas, Clustering</p>
-                <p>Segmented customers based on purchasing behavior for targeted marketing.</p>
+            <!-- Project 2 -->
+            <div class="project-card p-6 rounded-xl animate-on-scroll web" data-category="web">
+                <img src="https://via.placeholder.com/300x150?text=To-Do+List" alt="To-Do List" class="w-full h-40 object-cover rounded-t-xl mb-4">
+                <h3 class="text-2xl font-semibold mb-2 text-gray-100">React To-Do List</h3>
+                <p class="text-gray-300 mb-4">A responsive task management app with CRUD functionality and local storage.</p>
+                <p class="text-gray-400"><strong>Tech:</strong> React, JavaScript, CSS</p>
+                <p class="text-gray-400"><strong>Impact:</strong> Streamlined task organization for 50+ beta users.</p>
+                <a href="https://github.com/ram/react-todo" target="_blank" class="text-green-300 font-semibold hover:underline">View on GitHub</a>
             </div>
-
-            <div class="project">
-                <h3>E-commerce Analysis</h3>
-                <p><strong>Technologies:</strong> SQL, Data Visualization</p>
-                <p>Built SQL queries to analyze e-commerce data and generate business insights.</p>
+            <!-- Project 3 -->
+            <div class="project-card p-6 rounded-xl animate-on-scroll web" data-category="web">
+                <img src="https://via.placeholder.com/300x150?text=Weather+Map" alt="Weather Map" class="w-full h-40 object-cover rounded-t-xl mb-4">
+                <h3 class="text-2xl font-semibold mb-2 text-gray-100">React Weather Map</h3>
+                <p class="text-gray-300 mb-4">Interactive weather visualization app integrating APIs with a map-based UI.</p>
+                <p class="text-gray-400"><strong>Tech:</strong> React, JavaScript, API, CSS</p>
+                <p class="text-gray-400"><strong>Impact:</strong> Visualized weather patterns for 100+ users in hackathon demo.</p>
+                <a href="https://github.com/ram/react-weathermap" target="_blank" class="text-green-300 font-semibold hover:underline">View on GitHub</a>
+            </div>
+            <!-- Project 4 -->
+            <div class="project-card p-6 rounded-xl animate-on-scroll web" data-category="web">
+                <img src="https://via.placeholder.com/300x150?text=Blog+App" alt="Blog App" class="w-full h-40 object-cover rounded-t-xl mb-4">
+                <h3 class="text-2xl font-semibold mb-2 text-gray-100">Blog App with Next.js</h3>
+                <p class="text-gray-300 mb-4">A dynamic blog platform with server-side rendering and user authentication.</p>
+                <p class="text-gray-400"><strong>Tech:</strong> Next.js, JavaScript, CSS</p>
+                <p class="text-gray-400"><strong>Impact:</strong> Hosted 50+ posts with 300+ views on demo site.</p>
+                <a href="https://github.com/ram/blog-app" target="_blank" class="text-green-300 font-semibold hover:underline">View on GitHub</a>
+            </div>
+            <!-- Academic Project 1 -->
+            <div class="project-card p-6 rounded-xl animate-on-scroll data" data-category="data">
+                <img src="https://via.placeholder.com/300x150?text=Black+Box" alt="Black Box" class="w-full h-40 object-cover rounded-t-xl mb-4">
+                <h3 class="text-2xl font-semibold mb-2 text-gray-100">Automobile Black Box System</h3>
+                <p class="text-gray-300 mb-4">IoT-based system for accident analysis using GSM and sensors for real-time data logging.</p>
+                <p class="text-gray-400"><strong>Tech:</strong> IoT, Python, GSM, Sensors</p>
+                <p class="text-gray-400"><strong>Impact:</strong> Improved accident data accuracy by 25% in simulations.</p>
+                <a href="https://github.com/ram/black-box" target="_blank" class="text-green-300 font-semibold hover:underline">View on GitHub</a>
+            </div>
+            <!-- Academic Project 2 -->
+            <div class="project-card p-6 rounded-xl animate-on-scroll data" data-category="data">
+                <img src="https://via.placeholder.com/300x150?text=Healthcare+IoT" alt="Healthcare IoT" class="w-full h-40 object-cover rounded-t-xl mb-4">
+                <h3 class="text-2xl font-semibold mb-2 text-gray-100">IoT-Based Healthcare Monitoring</h3>
+                <p class="text-gray-300 mb-4">Real-time health monitoring system using IoT sensors and cloud integration.</p>
+                <p class="text-gray-400"><strong>Tech:</strong> IoT, Python, Cloud, Sensors</p>
+                <p class="text-gray-400"><strong>Impact:</strong> Enabled remote monitoring for 10+ patients in prototype.</p>
+                <a href="https://github.com/ram/healthcare-iot" target="_blank" class="text-green-300 font-semibold hover:underline">View on GitHub</a>
             </div>
         </div>
+    </section>
 
-        <!-- Education Section -->
-        <div class="section">
-            <h2>Education</h2>
-            <p><strong>Bachelor Of Technology</strong> - Siddharth Institute of engineering and Technology (2021-2025)</p>
-            <p><strong>Board of Intermediate Education AP </strong> - Sri Vema Junior College (2019-2021)</p>
-            <p><strong>Board of Secondary Education AP</strong> - ZP High School (2019)</p>
-        </div>
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gradient-to-r from-teal-900 to-green-900 py-16 text-center animate-on-scroll">
+        <h2 class="text-4xl font-bold mb-6 text-green-300">Let's Connect</h2>
+        <p class="text-lg mb-6 text-gray-200">Excited to build data-driven solutions or innovative apps? Reach out!</p>
+        <p>Email: <a href="mailto:ram@example.com" class="underline text-green-300 hover:text-green-400">ram@example.com</a></p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/ram" target="_blank" class="underline text-green-300 hover:text-green-400">linkedin.com/in/ram</a></p>
+        <p>GitHub: <a href="https://github.com/ram" target="_blank" class="underline text-green-300 hover:text-green-400">github.com/ram</a></p>
+    </section>
 
-        <!-- Contact Section -->
-        <div class="section contact">
-            <h2>Contact</h2>
-            <p>📧 Email: kapulurupavan@gmail.com</p>
-            <p>💼 LinkedIn: linkedin.com/in/yourprofile</p>
-            <p>🐱 GitHub: github.com/yourusername</p>
-            <p>📱 Phone: +91 6305146423</p>
-            <p>📍 Location: Andhra Pradesh, India</p>
-        </div>
-    </div>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-center py-8">
+        <p class="text-gray-300">&copy; 2025 Ram. Built with <span class="text-red-400">♥</span> and <span class="text-green-400">Code</span>.</p>
+    </footer>
+
+    <!-- Particle.js and Scroll Animation Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Particle Background
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 100, density: { enable: true, value_area: 800 } },
+                color: { value: "#ffffff" },
+                shape: { type: "circle", stroke: { width: 0 } },
+                opacity: { value: 0.6, random: true },
+                size: { value: 4, random: true },
+                line_linked: { enable: true, distance: 120, color: "#4ade80", opacity: 0.5, width: 1.5 },
+                move: { enable: true, speed: 3, direction: "none", random: true }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } },
+                modes: { grab: { distance: 200 }, push: { particles_nb: 5 } }
+            }
+        });
+
+        // Project Filter
+        function filterProjects(category) {
+            const projects = document.querySelectorAll('.project-card');
+            projects.forEach(project => {
+                project.style.opacity = '0';
+                setTimeout(() => {
+                    if (category === 'all' || project.dataset.category === category) {
+                        project.style.display = 'block';
+                        setTimeout(() => { project.style.opacity = '1'; }, 100);
+                    } else {
+                        project.style.display = 'none';
+                    }
+                }, 300);
+            });
+        }
+
+        // Scroll Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.2 });
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
 </body>
 </html>
